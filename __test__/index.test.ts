@@ -17,7 +17,9 @@ it('should work well', () => {
     ['mysql2', 'mysql:///test'],
     ['redis', 'redis://:root@localhost:6379/1'],
     ['redis1', 'otherdb://:root@localhost:6379/1'],
-    ['redis2', 'redis://']
+    ['redis2', 'redis://'],
+    ['bool1', 'true'],
+    ['bool1', 'True']
   ]
 
   samples.forEach(s => injectEnv(s[0], s[1]))
@@ -65,6 +67,9 @@ it('should work well', () => {
     port: 6379,
     db: 0
   })
+
+  expect(env.bool(samples[13][0])).toBeTruthy()
+  expect(env.bool(samples[14][0])).toBeTruthy()
 })
 
 it('should throw', () => {

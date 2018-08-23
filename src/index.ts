@@ -35,6 +35,10 @@ export default class Env {
     return p
   }
 
+  bool(name: string): boolean {
+    return ''.toLowerCase.call(this.source[name]).trim() === 'true'
+  }
+
   arr(name: string, len: number, step = ',', trimBlank = true): string[] {
     const v = this.source[name]
     const arr = ''.split.call(v, step)
